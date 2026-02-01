@@ -10,7 +10,6 @@
 
 <div class="card" id="start">
   <h1>Will you be my Valentine?</h1>
-
   <div class="buttons">
     <button id="yes">Yes</button>
     <button id="no">No</button>
@@ -18,14 +17,33 @@
 </div>
 
 <div class="card hidden" id="game">
-  <h2>Quick game first</h2>
-  <p>Catch the heart three times</p>
+  <h2>Before we continue</h2>
+  <p class="game-intro">
+    Complete these thoughts. Take your time.
+  </p>
 
-  <div id="gameArea">
-    <div id="heart">♥</div>
+  <div class="sentence">
+    <span>This Valentine, I want to spend time with you because </span>
+    <span class="blank" data-answer="your calm"></span>
   </div>
 
-  <p id="scoreText">Score: 0</p>
+  <div class="sentence hidden">
+    <span>I always feel better around you because </span>
+    <span class="blank" data-answer="the way you listen"></span>
+  </div>
+
+  <div class="sentence hidden">
+    <span>I am excited about us because </span>
+    <span class="blank" data-answer="being with you"></span>
+  </div>
+
+  <div class="choices">
+    <div class="choice">your calm</div>
+    <div class="choice">the way you listen</div>
+    <div class="choice">being with you</div>
+    <div class="choice">your smile</div>
+    <div class="choice">your energy</div>
+  </div>
 </div>
 
 <div class="card hidden" id="questions">
@@ -73,5 +91,6 @@
 </div>
 
 <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
