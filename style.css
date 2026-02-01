@@ -1,0 +1,44 @@
+body {
+  background: #f5e6eb;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.buttons button {
+  font-size: 18px;
+  padding: 12px 30px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #e63946;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+#no {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+#questions, #final {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+}
