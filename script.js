@@ -1,16 +1,16 @@
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
-
 const start = document.getElementById("start");
 const game = document.getElementById("game");
 const questions = document.getElementById("questions");
 const final = document.getElementById("final");
 
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
 const sentences = document.querySelectorAll(".sentence");
 const blanks = document.querySelectorAll(".blank");
 const choices = document.querySelectorAll(".choice");
 
-let currentSentence = 0;
+let currentStep = 0;
 
 no.addEventListener("mouseover", () => {
   const x = Math.random() * 120 - 60;
@@ -29,13 +29,15 @@ yes.addEventListener("click", () => {
 
 choices.forEach(choice => {
   choice.addEventListener("click", () => {
-    const blank = blanks[currentSentence];
-    if (choice.textContent === blank.dataset.answer) {
-      blank.textContent = choice.textContent;
-      currentSentence++;
+    const currentBlank = blanks[currentStep];
+    const correctAnswer = currentBlank.dataset.answer;
 
-      if (sentences[currentSentence]) {
-        sentences[currentSentence].classList.remove("hidden");
+    if (choice.textContent === correctAnswer) {
+      currentBlank.textContent = correctAnswer;
+      currentStep++;
+
+      if (sentences[currentStep]) {
+        sentences[currentStep].classList.remove("hidden");
       } else {
         celebrate();
         setTimeout(() => {
@@ -50,14 +52,14 @@ choices.forEach(choice => {
 function celebrate() {
   confetti({
     particleCount: 120,
-    spread: 80,
+    spread: 90,
     origin: { y: 0.6 }
   });
 
   setTimeout(() => {
     confetti({
       particleCount: 80,
-      spread: 100,
+      spread: 120,
       origin: { y: 0.4 }
     });
   }, 400);
