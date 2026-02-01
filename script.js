@@ -6,11 +6,43 @@ const final = document.getElementById("final");
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 
-const sentences = document.querySelectorAll(".sentence");
-const blanks = document.querySelectorAll(".blank");
-const choices = document.querySelectorAll(".choice");
+const questionTitle = document.getElementById("questionTitle");
+const optionsContainer = document.getElementById("options");
 
-let currentStep = 0;
+let currentQuestion = 0;
+
+const gameQuestions = [
+  {
+    question: "One thing I like about you the most is",
+    correct: "Your energy",
+    options: [
+      "Your energy",
+      "The way you dress",
+      "Your sense of humour",
+      "How organised you are"
+    ]
+  },
+  {
+    question: "A memory of ours that I will always cherish is",
+    correct: "I cannot pick one because there are so many",
+    options: [
+      "Our first conversation",
+      "That one late night call",
+      "I cannot pick one because there are so many",
+      "The first time we met"
+    ]
+  },
+  {
+    question: "One physical feature of yours that I fell for is",
+    correct: "Your hair",
+    options: [
+      "Your smile",
+      "Your eyes",
+      "Your hair",
+      "The way you carry yourself"
+    ]
+  }
+];
 
 no.addEventListener("mouseover", () => {
   const x = Math.random() * 120 - 60;
@@ -25,40 +57,48 @@ no.addEventListener("click", () => {
 yes.addEventListener("click", () => {
   start.style.display = "none";
   game.classList.remove("hidden");
+  loadQuestion();
 });
 
-choices.forEach(choice => {
-  choice.addEventListener("click", () => {
-    const currentBlank = blanks[currentStep];
-    const correctAnswer = currentBlank.dataset.answer;
+function loadQuestion() {
+  const q = gameQuestions[currentQuestion];
+  questionTitle.textContent = q.question;
+  optionsContainer.innerHTML = "";
 
-    if (choice.textContent === correctAnswer) {
-      currentBlank.textContent = correctAnswer;
-      currentStep++;
+  q.options.forEach(option => {
+    const div = document.createElement("div");
+    div.className = "option";
+    div.textContent = option;
 
-      if (sentences[currentStep]) {
-        sentences[currentStep].classList.remove("hidden");
-      } else {
-        celebrate();
-        setTimeout(() => {
-          game.style.display = "none";
-          questions.classList.remove("hidden");
-        }, 1500);
+    div.addEventListener("click", () => {
+      if (option === q.correct) {
+        currentQuestion++;
+        if (currentQuestion < gameQuestions.length) {
+          loadQuestion();
+        } else {
+          celebrate();
+          setTimeout(() => {
+            game.style.display = "none";
+            questions.classList.remove("hidden");
+          }, 1500);
+        }
       }
-    }
+    });
+
+    optionsContainer.appendChild(div);
   });
-});
+}
 
 function celebrate() {
   confetti({
-    particleCount: 120,
+    particleCount: 140,
     spread: 90,
     origin: { y: 0.6 }
   });
 
   setTimeout(() => {
     confetti({
-      particleCount: 80,
+      particleCount: 100,
       spread: 120,
       origin: { y: 0.4 }
     });
