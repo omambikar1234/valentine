@@ -12,66 +12,75 @@ body {
   background: white;
   padding: 40px;
   border-radius: 16px;
-  width: 380px;
+  width: 400px;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-h1, h2 {
-  margin-bottom: 16px;
 }
 
 .hidden {
   display: none;
 }
 
-.buttons button {
-  padding: 14px 34px;
-  font-size: 18px;
+h1, h2 {
+  margin-bottom: 16px;
+}
+
+.game-intro {
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.sentence {
+  margin-bottom: 22px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.blank {
+  display: inline-block;
+  min-width: 140px;
+  padding: 4px 6px;
+  border-bottom: 2px solid #e63946;
+  font-weight: bold;
+  color: #e63946;
+}
+
+.choices {
+  margin-top: 24px;
+}
+
+.choice {
+  display: inline-block;
+  padding: 10px 14px;
+  margin: 6px;
+  background: #fde2e4;
   border-radius: 10px;
   cursor: pointer;
-  margin: 10px;
+  font-size: 14px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.choice:hover {
+  background: #f9cfd6;
+  transform: scale(1.05);
+}
+
+.buttons button,
+#submit {
+  padding: 14px 34px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
 }
 
 #yes {
   background: #e63946;
   color: white;
-  border: none;
 }
 
 #no {
   background: #f1f1f1;
-}
-
-.game-intro {
-  margin-bottom: 20px;
-  color: #555;
-}
-
-.sentence {
-  margin-bottom: 18px;
-  font-size: 16px;
-}
-
-.blank {
-  display: inline-block;
-  min-width: 120px;
-  border-bottom: 2px solid #e63946;
-  margin-left: 6px;
-}
-
-.choices {
-  margin-top: 20px;
-}
-
-.choice {
-  display: inline-block;
-  padding: 8px 12px;
-  margin: 6px;
-  background: #fde2e4;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
 }
 
 .question {
@@ -88,15 +97,4 @@ select {
   width: 100%;
   padding: 10px;
   border-radius: 8px;
-}
-
-#submit {
-  padding: 14px;
-  width: 100%;
-  border-radius: 10px;
-  border: none;
-  background: #e63946;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
 }
