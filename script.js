@@ -56,8 +56,8 @@ no.addEventListener("click", () => {
 
 yes.addEventListener("click", () => {
   start.style.display = "none";
-  game.classList.remove("hidden");
   loadQuestion();
+  game.classList.remove("hidden");
 });
 
 function loadQuestion() {
@@ -65,14 +65,15 @@ function loadQuestion() {
   questionTitle.textContent = q.question;
   optionsContainer.innerHTML = "";
 
-  q.options.forEach(option => {
-    const div = document.createElement("div");
-    div.className = "option";
-    div.textContent = option;
+  q.options.forEach(optionText => {
+    const option = document.createElement("div");
+    option.className = "option";
+    option.textContent = optionText;
 
-    div.addEventListener("click", () => {
-      if (option === q.correct) {
+    option.addEventListener("click", () => {
+      if (optionText === q.correct) {
         currentQuestion++;
+
         if (currentQuestion < gameQuestions.length) {
           loadQuestion();
         } else {
@@ -85,7 +86,7 @@ function loadQuestion() {
       }
     });
 
-    optionsContainer.appendChild(div);
+    optionsContainer.appendChild(option);
   });
 }
 
