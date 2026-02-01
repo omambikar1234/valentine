@@ -56,7 +56,7 @@ document.getElementById("submit").addEventListener("click", () => {
     "With: " + person;
 
   window.location.href =
-    "mailto:your@email.com?subject=Valentine%20Plan&body=" + body;
+    "mailto:omambikar1234@gmail.com?subject=Valentine%20Plan&body=" + body;
 
   questions.style.display = "none";
   final.classList.remove("hidden");
