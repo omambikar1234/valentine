@@ -6,9 +6,11 @@ const game = document.getElementById("game");
 const questions = document.getElementById("questions");
 const final = document.getElementById("final");
 
-let score = 0;
-const heart = document.getElementById("heart");
-const scoreText = document.getElementById("scoreText");
+const sentences = document.querySelectorAll(".sentence");
+const blanks = document.querySelectorAll(".blank");
+const choices = document.querySelectorAll(".choice");
+
+let currentSentence = 0;
 
 no.addEventListener("mouseover", () => {
   const x = Math.random() * 120 - 60;
@@ -23,27 +25,43 @@ no.addEventListener("click", () => {
 yes.addEventListener("click", () => {
   start.style.display = "none";
   game.classList.remove("hidden");
-  moveHeart();
 });
 
-function moveHeart() {
-  const area = document.getElementById("gameArea");
-  const x = Math.random() * (area.clientWidth - 30);
-  const y = Math.random() * (area.clientHeight - 30);
-  heart.style.left = x + "px";
-  heart.style.top = y + "px";
+choices.forEach(choice => {
+  choice.addEventListener("click", () => {
+    const blank = blanks[currentSentence];
+    if (choice.textContent === blank.dataset.answer) {
+      blank.textContent = choice.textContent;
+      currentSentence++;
+
+      if (sentences[currentSentence]) {
+        sentences[currentSentence].classList.remove("hidden");
+      } else {
+        celebrate();
+        setTimeout(() => {
+          game.style.display = "none";
+          questions.classList.remove("hidden");
+        }, 1500);
+      }
+    }
+  });
+});
+
+function celebrate() {
+  confetti({
+    particleCount: 120,
+    spread: 80,
+    origin: { y: 0.6 }
+  });
+
+  setTimeout(() => {
+    confetti({
+      particleCount: 80,
+      spread: 100,
+      origin: { y: 0.4 }
+    });
+  }, 400);
 }
-
-heart.addEventListener("click", () => {
-  score++;
-  scoreText.textContent = "Score: " + score;
-  moveHeart();
-
-  if (score === 3) {
-    game.style.display = "none";
-    questions.classList.remove("hidden");
-  }
-});
 
 document.getElementById("submit").addEventListener("click", () => {
   const date = document.getElementById("date").value;
@@ -56,7 +74,7 @@ document.getElementById("submit").addEventListener("click", () => {
     "With: " + person;
 
   window.location.href =
-    "mailto:omambikar1234@gmail.com?subject=Valentine%20Plan&body=" + body;
+    "mailto:your@email.com?subject=Valentine%20Plan&body=" + body;
 
   questions.style.display = "none";
   final.classList.remove("hidden");
