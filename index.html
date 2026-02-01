@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div class="card">
+<div class="card" id="start">
   <h1>Will you be my Valentine?</h1>
 
   <div class="buttons">
@@ -15,36 +15,59 @@
   </div>
 </div>
 
-<div id="questions" class="hidden">
+<div class="card hidden" id="game">
+  <h2>Quick game first</h2>
+  <p>Catch the heart three times</p>
+
+  <div id="gameArea">
+    <div id="heart">♥</div>
+  </div>
+
+  <p id="scoreText">Score: 0</p>
+</div>
+
+<div class="card hidden" id="questions">
   <h2>Just a few questions</h2>
 
-  <label>Which date works for you?</label>
-  <select>
-    <option>21 Feb</option>
-    <option>22 Feb</option>
-    <option>28 Feb</option>
-  </select>
+  <div class="question">
+    <label>Which date works for you?</label>
+    <select id="date">
+      <option>21 Feb</option>
+      <option>22 Feb</option>
+      <option>28 Feb</option>
+    </select>
+  </div>
 
-  <label>What should we do?</label>
-  <select>
-    <option>At home popcorn, tiramisu, ice cream, pasta made by me and a movie of your choice</option>
-    <option>Bar hopping, karaoke, photobooth</option>
-    <option>Trekking and brunch</option>
-    <option>Mystery date</option>
-  </select>
+  <div class="question">
+    <label>What should we do?</label>
+    <select id="activity">
+      <option>At home popcorn tiramisu ice cream pasta by me and a movie of your choice</option>
+      <option>Bar hopping karaoke photobooth</option>
+      <option>Trekking and brunch</option>
+      <option>Mystery date</option>
+      <option>Sunset walk and dessert</option>
+      <option>Bookstore coffee and long conversations</option>
+      <option>Live music and late dinner</option>
+      <option>Drive with good music and street food</option>
+      <option>You decide I plan everything</option>
+    </select>
+  </div>
 
-  <label>Choose your date</label>
-  <select>
-    <option>Buba</option>
-    <option>Buba</option>
-    <option>Buba</option>
-  </select>
+  <div class="question">
+    <label>Choose your date</label>
+    <select id="person">
+      <option>Buba</option>
+      <option>Buba</option>
+      <option>Buba</option>
+    </select>
+  </div>
 
   <button id="submit">Submit</button>
 </div>
 
-<div id="final" class="hidden">
-  <h2>Email me your choices and sit tight.</h2>
+<div class="card hidden" id="final">
+  <h2>Sit tight.</h2>
+  <p>I will take it from here.</p>
 </div>
 
 <script src="script.js"></script>
