@@ -12,13 +12,17 @@ body {
   background: white;
   padding: 40px;
   border-radius: 16px;
-  width: 360px;
+  width: 380px;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 h1, h2 {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+}
+
+.hidden {
+  display: none;
 }
 
 .buttons button {
@@ -39,8 +43,35 @@ h1, h2 {
   background: #f1f1f1;
 }
 
-.hidden {
-  display: none;
+.game-intro {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.sentence {
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.blank {
+  display: inline-block;
+  min-width: 120px;
+  border-bottom: 2px solid #e63946;
+  margin-left: 6px;
+}
+
+.choices {
+  margin-top: 20px;
+}
+
+.choice {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 6px;
+  background: #fde2e4;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .question {
@@ -51,18 +82,15 @@ h1, h2 {
 label {
   display: block;
   margin-bottom: 6px;
-  font-weight: 500;
 }
 
 select {
   width: 100%;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
 }
 
 #submit {
-  margin-top: 10px;
   padding: 14px;
   width: 100%;
   border-radius: 10px;
@@ -70,19 +98,5 @@ select {
   background: #e63946;
   color: white;
   font-size: 16px;
-  cursor: pointer;
-}
-
-#gameArea {
-  position: relative;
-  height: 200px;
-  border-radius: 12px;
-  background: #fde2e4;
-  margin-bottom: 15px;
-}
-
-#heart {
-  position: absolute;
-  font-size: 32px;
   cursor: pointer;
 }
