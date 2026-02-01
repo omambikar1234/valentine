@@ -1,88 +1,63 @@
-body {
-  margin: 0;
-  background: #f6e9ee;
-  font-family: Arial, sans-serif;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
+const start = document.getElementById("start");
+const game = document.getElementById("game");
+const questions = document.getElementById("questions");
+const final = document.getElementById("final");
+
+let score = 0;
+const heart = document.getElementById("heart");
+const scoreText = document.getElementById("scoreText");
+
+no.addEventListener("mouseover", () => {
+  const x = Math.random() * 120 - 60;
+  const y = Math.random() * 120 - 60;
+  no.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+no.addEventListener("click", () => {
+  alert("Wrong answer. Try again.");
+});
+
+yes.addEventListener("click", () => {
+  start.style.display = "none";
+  game.classList.remove("hidden");
+  moveHeart();
+});
+
+function moveHeart() {
+  const area = document.getElementById("gameArea");
+  const x = Math.random() * (area.clientWidth - 30);
+  const y = Math.random() * (area.clientHeight - 30);
+  heart.style.left = x + "px";
+  heart.style.top = y + "px";
 }
 
-.card {
-  background: white;
-  padding: 40px;
-  border-radius: 16px;
-  width: 360px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
+heart.addEventListener("click", () => {
+  score++;
+  scoreText.textContent = "Score: " + score;
+  moveHeart();
 
-h1, h2 {
-  margin-bottom: 20px;
-}
+  if (score === 3) {
+    game.style.display = "none";
+    questions.classList.remove("hidden");
+  }
+});
 
-.buttons button {
-  padding: 14px 34px;
-  font-size: 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin: 10px;
-}
+document.getElementById("submit").addEventListener("click", () => {
+  const date = document.getElementById("date").value;
+  const activity = document.getElementById("activity").value;
+  const person = document.getElementById("person").value;
 
-#yes {
-  background: #e63946;
-  color: white;
-  border: none;
-}
+  const body =
+    "Date: " + date + "%0D%0A" +
+    "Activity: " + activity + "%0D%0A" +
+    "With: " + person;
 
-#no {
-  background: #f1f1f1;
-}
+  window.location.href =
+    "mailto:your@email.com?subject=Valentine%20Plan&body=" + body;
 
-.hidden {
-  display: none;
-}
-
-.question {
-  margin-bottom: 22px;
-  text-align: left;
-}
-
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
-}
-
-select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-#submit {
-  margin-top: 10px;
-  padding: 14px;
-  width: 100%;
-  border-radius: 10px;
-  border: none;
-  background: #e63946;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#gameArea {
-  position: relative;
-  height: 200px;
-  border-radius: 12px;
-  background: #fde2e4;
-  margin-bottom: 15px;
-}
-
-#heart {
-  position: absolute;
-  font-size: 32px;
-  cursor: pointer;
-}
+  questions.style.display = "none";
+  final.classList.remove("hidden");
+});
